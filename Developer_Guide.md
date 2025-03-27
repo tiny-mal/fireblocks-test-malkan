@@ -109,8 +109,3 @@ Creates a new task.
 - **Secure API Key**: Store API keys securely and avoid hardcoding them in source code.
 - **Validate Input**: Ensure request payloads are correctly formatted before sending.
 
-## Submission
-Ensure the guide is well-structured and submitted as a GitHub repository containing:
-1. `README.md` (this guide)
-2. `openapi.yaml` (API specification)
-3. Optional: An HTML version for improved readability.

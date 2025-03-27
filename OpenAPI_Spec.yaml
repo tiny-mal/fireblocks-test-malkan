@@ -1,0 +1,82 @@
+components:
+  securitySchemes:
+    apiKeyAuth:
+      in: header
+      name: X-API-KEY
+      type: apiKey
+info:
+  description: API for managing technical writing tasks.
+  title: Fireblocks Technical Writer API
+  version: 1.0.0
+openapi: 3.0.0
+paths:
+  /tasks:
+    get:
+      description: Fetches a list of all available tasks in the system.
+      operationId: getTasks
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  properties:
+                    id:
+                      type: integer
+                    status:
+                      type: string
+                    title:
+                      type: string
+                  type: object
+                type: array
+          description: Successful response
+        '401':
+          description: Unauthorized - Invalid API key
+      security:
+      - apiKeyAuth: []
+      summary: Retrieve all tasks
+    post:
+      description: Adds a new task to the system.
+      operationId: createTask
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                status:
+                  enum:
+                  - pending
+                  - in-progress
+                  - completed
+                  type: string
+                title:
+                  example: Write API documentation
+                  type: string
+              required:
+              - title
+              type: object
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                  status:
+                    type: string
+                  title:
+                    type: string
+                type: object
+          description: Task created successfully
+        '400':
+          description: Bad Request - Invalid input
+        '401':
+          description: Unauthorized - Invalid API key
+      security:
+      - apiKeyAuth: []
+      summary: Create a new task
+servers:
+- description: Production Server
+  url: https://api.fireblocks.com

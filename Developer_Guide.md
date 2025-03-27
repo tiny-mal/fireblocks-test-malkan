@@ -10,7 +10,6 @@
 5. [Error Handling](#error-handling)
 6. [Best Practices](#best-practices)
 7. [Code Example: POST /tasks](#code-example-post-tasks)
-8. [Submission Instructions](#submission-instructions)
 
 ---
 
